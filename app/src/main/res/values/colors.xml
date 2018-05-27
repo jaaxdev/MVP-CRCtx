@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#8618b9</color>
+    <color name="colorPrimaryDark">#9c6d6d</color>
+    <color name="colorAccent">#eca4436a</color>
+    <color name="rojo">#ec0707</color>
+    <color name="negro">#000</color>
+    <color name="naranja">#ef622a</color>
+    <color name="verde">#167303</color>
+    <color name="violeta">#992d</color>
+    <color name="azul_polar">#ee44eab0</color>
+    <color name="amarillo">#fff30e</color>
+</resources>

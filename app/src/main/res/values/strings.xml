@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CRC T(x) : Jaaziel Rebollar</string>
+    <string name="transmitir">Trama a transmitir M(x):</string>
+    <string name="minmax48">Mín. 4 bits máx. 8 bits</string>
+    <string name="minmax816">Mín. 8 bits máx. 16 bits</string>
+    <string name="polinomio_generador_g_x">Polinomio generador G(x):</string>
+    <string name="mensaje_transmitido">Mensaje transmitido</string>
+    <string name="tx">T(x):</string>
+    <string name="transmitirbtn">Transmitir</string>
+    <string name="reiniciar">Reiniciar</string>
+</resources>
