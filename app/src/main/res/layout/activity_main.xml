@@ -7,7 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="@color/violeta"
+    android:background="@color/azul_polar"
     tools:context="com.jaaziel.irc.crc_tx.MainActivity">
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_below="@+id/mx"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/rojo"
         android:hint="@string/minmax816"
         android:inputType="number"/>
 
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_below="@id/gx"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/rojo"
         android:hint="@string/minmax48"
         android:inputType="number"/>
 

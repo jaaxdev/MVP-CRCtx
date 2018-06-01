@@ -1,5 +1,11 @@
 package com.jaaziel.irc.crc_tx;
 
+/*
+ *
+ * Autor: Jaaziel Isai Rebollar Calzada
+ *
+ */
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,26 +21,33 @@ public class MainActivity extends AppCompatActivity {
     Button transmitir, reiniciar;
     EditText mx, gx;
     TextView resultado;
-    boolean tmx=false, tgx=false;
+    boolean tmx, tgx;
     char[] array, arraye;
     int rx;
     String m1, g1;
-    private ArrayList <Integer> Mx = new ArrayList <> ( );
-    private ArrayList <Integer> Gx = new ArrayList <> ( );
-    private ArrayList <Integer> res = new ArrayList <> ( );
-    private ArrayList <Integer> tmp = new ArrayList <> ( );
+    private ArrayList <Integer> Mx;
+    private ArrayList <Integer> Gx;
+    private ArrayList <Integer> res;
+    private ArrayList <Integer> tmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        resultado = (TextView)findViewById(R.id.resultado);
-        mx = (EditText)findViewById(R.id.enter_mx);
-        gx = (EditText)findViewById(R.id.enter_gx);
-        transmitir = (Button)findViewById(R.id.transmitir);
-        reiniciar = (Button)findViewById(R.id.reiniciar);
+        resultado = findViewById(R.id.resultado);
+        mx = findViewById(R.id.enter_mx);
+        gx = findViewById(R.id.enter_gx);
+        transmitir = findViewById(R.id.transmitir);
+        reiniciar = findViewById(R.id.reiniciar);
+        Mx = new ArrayList <> (0);
+        Gx = new ArrayList <> (0);
+        res = new ArrayList <> (0);
+        tmp = new ArrayList <> (0);
 
+        onClickButton();
+    }
+    private void onClickButton(){
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void verMx( String str ){
+    private void verMx( String str ){
         Toast toast = Toast.makeText(MainActivity.this,"M(x):\nMínimo 8 bits, máximo 16", Toast.LENGTH_SHORT );
         Toast toaste = Toast.makeText(MainActivity.this,"M(x):\nIngresa un número binario válido", Toast.LENGTH_SHORT );
 
@@ -74,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         if( arraye.length!=0 ){
             if( (arraye.length < 8)||(arraye.length > 16) ) {
                 toast.show();
-                return;
             } else {
                 for( int i=0; i<arraye.length; i++ ) {
                     if ( !((arraye[i] == '0') || (arraye[i] == '1')) ) {
@@ -86,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    public void verGx( String st ){
+    private void verGx( String st ){
         Toast toast = Toast.makeText(MainActivity.this,"G(x):\nMínimo 4 bits, máximo 8", Toast.LENGTH_SHORT );
         Toast toaste = Toast.makeText(MainActivity.this,"G(x):\nIngresa un número binario válido", Toast.LENGTH_SHORT );
         array = st.toCharArray();
@@ -98,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
             }
             if( (array.length < 4)||(array.length > 8) ) {
                 toast.show();
-                return;
             } else {
                 for( int i=0; i<array.length; i++ ) {
                     if( !((array[i] == '0') || (array[i] == '1')) ) {
@@ -111,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //-------------------------------------------------------------------------
-    public void proceso( String sm, String sg ) {
+    private void proceso( String sm, String sg ) {
         Mx.clear();
         Gx.clear();
         for( int i=0; i<sm.length(); i++ ){
@@ -135,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             Mx.add ( 0 );
 
         for (int i = 0; i < rx; i++) {
-            if (Gx.get (i) == Mx.get (i)) res.add (0);
+            if (Gx.get (i).equals(Mx.get (i))) res.add (0);
             else res.add (1);
         }
 
@@ -168,13 +179,13 @@ public class MainActivity extends AppCompatActivity {
         resultado.setText(ls);
     }
 
-    public void division() {
+    private void division() {
         tmp.clear ( );
         for (int i = 0; i < res.size ( ); i++)
             tmp.add (res.get (i) );
         res.clear ( );
         for (int j = 0; j < tmp.size ( ); j++) {
-            if ( Gx.get (j) == tmp.get (j) ) res.add (0);
+            if ( Gx.get (j).equals(tmp.get (j) )) res.add (0);
             else  res.add (1);
         }
     }

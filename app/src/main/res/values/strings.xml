@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CRC T(x) : Jaaziel Rebollar</string>
+    <string name="app_name">CRC T(x) : jaaziel.irc</string> <!--Cambia este nombre con el tuyo-->
     <string name="transmitir">Trama a transmitir M(x):</string>
     <string name="minmax48">Mín. 4 bits máx. 8 bits</string>
     <string name="minmax816">Mín. 8 bits máx. 16 bits</string>
