@@ -26,7 +26,11 @@
         android:layout_below="@+id/mx"
         android:textColor="@color/rojo"
         android:hint="@string/minmax816"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:digits="10"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:imeOptions="actionNext"/>
 
     <TextView
         android:id="@+id/gx"
@@ -45,7 +49,11 @@
         android:layout_below="@id/gx"
         android:textColor="@color/rojo"
         android:hint="@string/minmax48"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:digits="10"
+        android:maxLength="8"
+        android:maxLines="1"
+        android:imeOptions="actionDone"/>
 
     <TextView
         android:id="@+id/tx"
