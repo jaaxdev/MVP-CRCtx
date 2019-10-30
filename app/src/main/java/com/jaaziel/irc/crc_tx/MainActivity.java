@@ -6,9 +6,11 @@ package com.jaaziel.irc.crc_tx;
  *
  */
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,10 +27,7 @@ public class MainActivity extends AppCompatActivity {
     char[] array, arraye;
     int rx;
     String m1, g1;
-    private ArrayList <Integer> Mx;
-    private ArrayList <Integer> Gx;
-    private ArrayList <Integer> res;
-    private ArrayList <Integer> tmp;
+    private ArrayList <Integer> Mx, Gx, res, tmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +54,18 @@ public class MainActivity extends AppCompatActivity {
                 m1=""; g1="";
                 mx.setText(""); gx.setText("");
                 resultado.setText("");
+                mx.requestFocus();
             }
         });
         //------------------------------------------------------------------------
         transmitir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //oculta el teclado si se queda visible
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(gx.getWindowToken(), 0);
+
                 Gx.clear ( );
                 res.clear ( );
                 Mx.clear ( );
@@ -88,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
             if( (arraye.length < 8)||(arraye.length > 16) ) {
                 toast.show();
             } else {
-                for( int i=0; i<arraye.length; i++ ) {
-                    if ( !((arraye[i] == '0') || (arraye[i] == '1')) ) {
-                        toaste.show ( );
+                for (char c : arraye) {
+                    if (!((c == '0') || (c == '1'))) {
+                        toaste.show();
                         return;
                     }
                 }
@@ -111,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
             if( (array.length < 4)||(array.length > 8) ) {
                 toast.show();
             } else {
-                for( int i=0; i<array.length; i++ ) {
-                    if( !((array[i] == '0') || (array[i] == '1')) ) {
-                        toaste.show ( );
+                for (char c : array) {
+                    if (!((c == '0') || (c == '1'))) {
+                        toaste.show();
                         return;
                     }
                 }
