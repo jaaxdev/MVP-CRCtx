@@ -1,108 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:background="@color/azul_polar"
-    tools:context="com.jaaziel.irc.crc_tx.MainActivity">
+    android:padding="16dp"
+    android:background="@color/azul_polar">
 
-    <TextView
-        android:id="@+id/mx"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBitsMx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:text="@string/transmitir"
-        android:textColor="@color/negro"/>
+        android:textColor="@color/negro"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/enter_mx"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etBitsMx"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_below="@+id/mx"
-        android:textColor="@color/rojo"
-        android:hint="@string/minmax816"
-        android:inputType="number"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:digits="10"
+        android:hint="@string/minmax816"
+        android:imeOptions="actionNext"
+        android:inputType="number"
         android:maxLength="16"
         android:maxLines="1"
-        android:imeOptions="actionNext"/>
+        android:textColor="@color/rojo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBitsMx" />
 
-    <TextView
-        android:id="@+id/gx"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBitsGx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/polinomio_generador_g_x"
-        android:layout_below="@+id/enter_mx"
-        android:textColor="@color/negro"/>
+        android:textColor="@color/negro"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etBitsMx" />
 
-    <EditText
-        android:id="@+id/enter_gx"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etBitsGx"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_below="@id/gx"
-        android:textColor="@color/rojo"
-        android:hint="@string/minmax48"
-        android:inputType="number"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:digits="10"
+        android:hint="@string/minmax48"
+        android:imeOptions="actionDone"
+        android:inputType="number"
         android:maxLength="8"
         android:maxLines="1"
-        android:imeOptions="actionDone"/>
+        android:textColor="@color/rojo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBitsGx" />
 
-    <TextView
-        android:id="@+id/tx"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMessageTx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="@string/mensaje_transmitido"
-        android:layout_margin="10dp"
         android:textColor="@color/negro"
-        android:layout_below="@+id/transmitir" />
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTransmitir" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvResultTx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/tx"
         android:textColor="@color/negro"
-        android:id="@+id/textView"
-        android:layout_alignBaseline="@+id/resultado"
-        android:layout_alignBottom="@+id/resultado"
-        android:layout_alignLeft="@+id/tx"
-        android:layout_alignStart="@+id/tx" />
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMessageTx" />
 
-    <Button
-        android:id="@+id/transmitir"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTransmitir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="@string/transmitirbtn"
-        android:layout_below="@+id/enter_gx"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etBitsGx" />
 
-    <Button
-        android:id="@+id/reiniciar"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnReiniciar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/reiniciar"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/transmitir"
-        android:layout_alignStart="@+id/transmitir"
-        android:layout_alignRight="@+id/transmitir"
-        android:layout_alignEnd="@+id/transmitir" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResultado"
+        app:layout_constraintVertical_bias="0.75" />
 
-    <TextView
-        android:id="@+id/resultado"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:layout_marginTop="10dp"
+        android:text="@string/resultado"
         android:textColor="@color/negro"
-        android:layout_below="@+id/tx"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResultTx" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
