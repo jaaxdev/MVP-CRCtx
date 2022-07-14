@@ -7,6 +7,7 @@ public interface MainMVP {
     }
 
     interface Presenter {
+        void initLists();
         void notifyErrorRangoBitsMx();
         void notifyErrorRangoBitsGx();
         void notifyErrorSoloBits();
@@ -14,7 +15,7 @@ public interface MainMVP {
         void doDivision();
         void doProceso(String stringMx, String stringGx);
         void transmitir();
-        void reiniciarVariables();
+        void reiniciarValores();
     }
 
     interface View {

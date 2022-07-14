@@ -5,13 +5,23 @@ import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.jaaziel.irc.crc_tx.R;
 import com.jaaziel.irc.crc_tx.data.MainMVP;
-import com.jaaziel.irc.crc_tx.data.MainPresenter;
 import com.jaaziel.irc.crc_tx.databinding.ActivityMainBinding;
 
+import java.util.Objects;
+
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity implements MainMVP.View {
 
     ActivityMainBinding binding;
+
+    @Inject
     MainMVP.Presenter presenter;
 
     @Override
@@ -19,33 +29,31 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        presenter = new MainPresenter(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        presenter.initLists();
         binding.btnTransmitir.setOnClickListener(view -> presenter.transmitir());
-        binding.btnReiniciar.setOnClickListener(view -> presenter.reiniciarVariables());
+        binding.btnReiniciar.setOnClickListener(view -> presenter.reiniciarValores());
     }
 
     @Override
     public String getMx() {
-        return binding.etBitsMx.getText().toString();
+        return Objects.requireNonNull(binding.etBitsMx.getText()).toString();
     }
 
     @Override
     public String getGx() {
-        return binding.etBitsGx.getText().toString();
+        return Objects.requireNonNull(binding.etBitsGx.getText()).toString();
     }
 
     @Override
     public void reiniciarTodo() {
         binding.etBitsMx.setText("");
         binding.etBitsGx.setText("");
-        binding.tvMessageTx.setText("");
-        binding.tvResultado.setText("");
+        binding.tvResultado.setText(this.getString(R.string.resultado));
     }
 
     @Override
@@ -57,19 +65,17 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
 
     @Override
     public void errorRangoBitsMx() {
-        Toast.makeText(MainActivity.this,"M(x):\nMínimo 8 bits, máximo 16", Toast.LENGTH_SHORT ).show();
         binding.etBitsMx.setError("8 a 16 bits");
     }
 
     @Override
     public void errorRangoBitsGx() {
-        Toast.makeText(this,"G(x):\nMínimo 4 bits, máximo 8", Toast.LENGTH_SHORT ).show();
         binding.etBitsGx.setError("4 a 8 bits");
     }
 
     @Override
     public void errorSoloBits() {
-        Toast.makeText(MainActivity.this,"Ingresa un número binario válido", Toast.LENGTH_SHORT ).show();
+        Toast.makeText(this,"Ingresa un número binario válido", Toast.LENGTH_SHORT ).show();
     }
 
     @Override

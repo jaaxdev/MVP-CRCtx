@@ -5,14 +5,21 @@ import com.jaaziel.irc.crc_tx.ui.MainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainPresenter implements MainMVP.Presenter {
-    private final MainMVP.View view;
-    private final MainMVP.Model model;
-    private final List<Integer> tmp, resultado, listMx, listGx;
+import javax.inject.Inject;
 
+public class MainPresenter implements MainMVP.Presenter {
+    private final MainMVP.Model model;
+    private final MainMVP.View view;
+    private List<Integer> tmp, resultado, listMx, listGx;
+
+    @Inject
     public MainPresenter(MainActivity view) {
         this.view = view;
         model = new MainModel(this);
+    }
+
+    @Override
+    public void initLists() {
         tmp = new ArrayList<>();
         resultado = new ArrayList<>();
         listGx = new ArrayList<>();
@@ -117,15 +124,15 @@ public class MainPresenter implements MainMVP.Presenter {
             }
             view.mostrarResultado(listResult.toString());
         }
+        tmp.clear();
+        resultado.clear();
+        listMx.clear();
+        listGx.clear();
     }
 
     @Override
-    public void reiniciarVariables() {
+    public void reiniciarValores() {
         view.reiniciarTodo();
-        tmp.clear();
-        resultado.clear();
-        listGx.clear();
-        listMx.clear();
     }
 
     @Override
